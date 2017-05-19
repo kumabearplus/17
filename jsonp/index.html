@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JSONP</title>
+</head>
+<body>
+  <ul class="lists"></ul>
+  <button class="btn">换一组</button>
+  <script type="text/javascript" src='jquery/jquery-3.2.1.min.js'></script>
+  <script type="text/javascript">
+  	//var lists = $('.lists')
+  	//var btn = $('.btn')
+  	var $lists = $('.lists')
+  	var $btn = $('.btn')
+
+  	$btn.on('click',function(){
+  	  var $script = $('<script>' + '</scr\ipt>')
+  	  $script.attr('src','http://book.kuma.com:8080/getNew?callback=appendHtml')
+  	  $('head').append($script)
+  	  //$('head').remove($script) 这个有问题
+  	  $('head script').remove()
+
+
+  	})
+  	/*
+  	btn.addEventListener('click',function(){
+  	  var script = document.createElement('script')
+  	  script.src = 'http://book.kuma.com:8080/getNew?callback=appendHtml'
+  	  document.head.appendChild(script)
+  	  document.head.removeChild(script)
+  	})
+  	*/
+
+  	function appendHtml(data){
+  	  var htmls = ''
+  	  for (var i = 0; i < data.length; i++) {
+  	   	var li = '<li>' + data[i] + '</li>'
+  	   	htmls += li
+
+  	  }
+  	  //lists.innerHTML = htmls
+  	  $lists.html(htmls)
+
+  	  //$lists.append(htmls)
+
+  	}
+/*
+  	function $(cls){
+  	  return document.querySelector(cls)
+  	}
+  	*/
+  </script>
+</body>
+</html>

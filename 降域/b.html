@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>降域</title>
+</head>
+<body>
+
+  <input type="text" placeholder="http://book.kuma.com:8080/b.html">
+
+  <script type="text/javascript">
+    var bInput = $('input')
+    bInput.addEventListener('click',function(){
+      var aInput = $('.parent input')
+      console.log('b',this.value)
+      window.parent.aInput.value = this.value
+    })
+    document.domain = 'kuma.com'
+    function $(cls){
+      return document.querySelector(cls)
+    }
+  </script>
+
+
+</body>
+</html>
